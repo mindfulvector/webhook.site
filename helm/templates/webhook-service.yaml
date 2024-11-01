@@ -2,22 +2,20 @@ apiVersion: v1
 kind: Service
 metadata:
   name: webhook
-  namespace: webhook
+  namespace: webhook-site
 spec:
   ports:
   - name: "8084"
     port: 8084
     targetPort: 80
   selector:
-    app: webhook
-status:
-  loadBalancer: {}
+    app: webhook-site
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: redis
-  namespace: webhook
+  namespace: webhook-site
 spec:
   selector:
     app: redis
@@ -29,7 +27,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: laravel-echo-server
-  namespace: webhook
+  namespace: webhook-site
 spec:
   selector:
     app: laravel-echo-server
